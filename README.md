@@ -1,7 +1,23 @@
+  ____  ____  ____                
+ |  _ \|  _ \|  _ \               
+ | |_) | | | | |_) |              
+ |  _ <| |_| |  __/               
+ |_|_\_\____/|_|                  
+ |  _ \ _ __ _____  ___   _       
+ | |_) | '__/ _ \ \/ / | | |      
+ |  __/| | | (_) >  <| |_| |      
+ |_|   |_|  \___/_/\_\\__, |      
+ | |   (_)_ __ | | __ |___/       
+ | |   | | '_ \| |/ /             
+ | |___| | | | |   <              
+ |_____|_|_| |_|_|\_\ _           
+ | __ ) _   _(_) | __| | ___ _ __ 
+ |  _ \| | | | | |/ _` |/ _ \ '__|
+ | |_) | |_| | | | (_| |  __/ |   
+ |____/ \__,_|_|_|\__,_|\___|_| 
+ 
 # RDPProxyLinkBuilder
 Create RDP Links for Privilege Session Manager Proxy
 
 ## Usage
-Call the `Set-PSMRDPFile` function and give it a path to your CSV file.
-
-It will create an RDP file setup for CyberArk's Privileged Session Manager RDP Proxy for each host in the CSV file.
+.\RDP_Build.ps1 YourFile.csv
