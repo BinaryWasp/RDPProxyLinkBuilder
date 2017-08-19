@@ -1,79 +1,70 @@
-function Set-PSMRDPFile {
-    
-    [CmdletBinding()]
-    Param (
-        [Parameter(Mandatory=$true)]
-        [String]
-        $Path
-    )
+#Define Parameters
+Param(
+  [string]$filePath
+)
 
-    foreach ($row in $csv) {
+#Load CSV
+Write-Host "Onboarding file $filePath. Please Wait" -ForegroundColor Yellow
+$csv = Import-Csv $filePath
 
-        # Import CSV file
-        $csv = Import-Csv $Path
+foreach ($line in $csv) {
 
-        # Set Variables
-        $RDPname=$line.filename + ".rdp"
-        $PSMserver=$line.PSM_Server
-        $Username=$line.username
-        $Server=$line.server
-        $EPVuser=$line.epv_username
+#Define Variables
+   $RDPname=$line.filename + ".rdp"
+   $PSMserver=$line.PSM_Server
+   $Username=$line.username
+   $Server=$line.server
+   $EPVuser=$line.epv_username
 
-        # Create .rdp file
-        Add-Content $RDPname "screen mode id:i:2"
-        Add-Content $RDPname "use multimon:i:0"
-        Add-Content $RDPname "desktopwidth:i:1920"
-        Add-Content $RDPname "desktopheight:i:1080"
-        Add-Content $RDPname "session bpp:i:32"
-        Add-Content $RDPname "winposstr:s:0,3,0,0,800,600"
-        Add-Content $RDPname "compression:i:1"
-        Add-Content $RDPname "keyboardhook:i:2"
-        Add-Content $RDPname "audiocapturemode:i:0"
-        Add-Content $RDPname "videoplaybackmode:i:1"
-        Add-Content $RDPname "connection type:i:7"
-        Add-Content $RDPname "networkautodetect:i:1"
-        Add-Content $RDPname "bandwidthautodetect:i:1"
-        Add-Content $RDPname "displayconnectionbar:i:1"
-        Add-Content $RDPname "importenableworkspacereconnect:i:0"
-        Add-Content $RDPname "disable wallpaper:i:0"
-        Add-Content $RDPname "allow font smoothing:i:0"
-        Add-Content $RDPname "allow desktop composition:i:0"
-        Add-Content $RDPname "disable full window drag:i:1"
-        Add-Content $RDPname "disable menu anims:i:1"
-        Add-Content $RDPname "disable themes:i:0"
-        Add-Content $RDPname "disable cursor setting:i:0"
-        Add-Content $RDPname "bitmapcachepersistenable:i:1"
-        Add-Content $RDPname "full address:s:$PSMserver"
-        Add-Content $RDPname "audiomode:i:0"
-        Add-Content $RDPname "redirectprinters:i:0"
-        Add-Content $RDPname "redirectcomports:i:0"
-        Add-Content $RDPname "redirectsmartcards:i:1"
-        Add-Content $RDPname "redirectclipboard:i:1"
-        Add-Content $RDPname "redirectposdevices:i:0"
-        Add-Content $RDPname "autoreconnection enabled:i:1"
-        Add-Content $RDPname "authentication level:i:2"
-        Add-Content $RDPname "prompt for credentials:i:0"
-        Add-Content $RDPname "negotiate security layer:i:1"
-        Add-Content $RDPname "remoteapplicationmode:i:0"
-        Add-Content $RDPname "alternate shell:s:psm /u $Username /a $Server /c PSM-RDP"
-        Add-Content $RDPname "shell working directory:s:"
-        Add-Content $RDPname "gatewayhostname:s:"
-        Add-Content $RDPname "gatewayusagemethod:i:4"
-        Add-Content $RDPname "gatewaycredentialssource:i:4"
-        Add-Content $RDPname "gatewayprofileusagemethod:i:0"
-        Add-Content $RDPname "promptcredentialonce:i:0"
-        Add-Content $RDPname "gatewaybrokeringtype:i:0"
-        Add-Content $RDPname "use redirection server name:i:0"
-        Add-Content $RDPname "rdgiskdcproxy:i:0"
-        Add-Content $RDPname "kdcproxyname:s:"
-        Add-Content $RDPname "username:s:$EPVuser"
-        Add-Content $RDPname "drivestoredirect:s:"
-    }
+#Building of RDP File
+   add-content $RDPname "screen mode id:i:2"
+   add-content $RDPname "use multimon:i:0"
+   add-content $RDPname "desktopwidth:i:1920"
+   add-content $RDPname "desktopheight:i:1080"
+   add-content $RDPname "session bpp:i:32"
+   add-content $RDPname "winposstr:s:0,3,0,0,800,600"
+   add-content $RDPname "compression:i:1"
+   add-content $RDPname "keyboardhook:i:2"
+   add-content $RDPname "audiocapturemode:i:0"
+   add-content $RDPname "videoplaybackmode:i:1"
+   add-content $RDPname "connection type:i:7"
+   add-content $RDPname "networkautodetect:i:1"
+   add-content $RDPname "bandwidthautodetect:i:1"
+   add-content $RDPname "displayconnectionbar:i:1"
+   add-content $RDPname "importenableworkspacereconnect:i:0"
+   add-content $RDPname "disable wallpaper:i:0"
+   add-content $RDPname "allow font smoothing:i:0"
+   add-content $RDPname "allow desktop composition:i:0"
+   add-content $RDPname "disable full window drag:i:1"
+   add-content $RDPname "disable menu anims:i:1"
+   add-content $RDPname "disable themes:i:0"
+   add-content $RDPname "disable cursor setting:i:0"
+   add-content $RDPname "bitmapcachepersistenable:i:1"
+   add-content $RDPname "full address:s:$PSMserver"
+   add-content $RDPname "audiomode:i:0"
+   add-content $RDPname "redirectprinters:i:0"
+   add-content $RDPname "redirectcomports:i:0"
+   add-content $RDPname "redirectsmartcards:i:1"
+   add-content $RDPname "redirectclipboard:i:1"
+   add-content $RDPname "redirectposdevices:i:0"
+   add-content $RDPname "autoreconnection enabled:i:1"
+   add-content $RDPname "authentication level:i:2"
+   add-content $RDPname "prompt for credentials:i:0"
+   add-content $RDPname "negotiate security layer:i:1"
+   add-content $RDPname "remoteapplicationmode:i:0"
+   add-content $RDPname "alternate shell:s:psm /u $Username /a $Server /c PSM-RDP"
+   add-content $RDPname "shell working directory:s:"
+   add-content $RDPname "gatewayhostname:s:"
+   add-content $RDPname "gatewayusagemethod:i:4"
+   add-content $RDPname "gatewaycredentialssource:i:4"
+   add-content $RDPname "gatewayprofileusagemethod:i:0"
+   add-content $RDPname "promptcredentialonce:i:0"
+   add-content $RDPname "gatewaybrokeringtype:i:0"
+   add-content $RDPname "use redirection server name:i:0"
+   add-content $RDPname "rdgiskdcproxy:i:0"
+   add-content $RDPname "kdcproxyname:s:"
+   add-content $RDPname "username:s:$EPVuser"
+   add-content $RDPname "drivestoredirect:s:"
+Write-Host "$RDPname Created successfully." -ForegroundColor Green
 }
 
-try {
-    Set-PSMRDPFile -Path "CSV.csv"
-}
-catch {
-    Write-Host "There was an error processing the CSV file.  Please try again." -ForegroundColor Red
-}
