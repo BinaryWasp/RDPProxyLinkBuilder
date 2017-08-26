@@ -1,5 +1,5 @@
 # RDPProxyLinkBuilder
-Create RDP Links for Privilege Session Manager Proxy
+Create Links for Privilege Session Manager Proxy in .RDP or within Devolutions Remote Desktop Manager.
 
 ## Usage
-.\RDP_Build.ps1 YourFile.csv
+.\RDP_Build.ps1 -FilePath YourFile.csv -Format RDP|Devolutions
