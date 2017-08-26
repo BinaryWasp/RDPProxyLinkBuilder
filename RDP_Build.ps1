@@ -6,8 +6,8 @@ Param(
 write-host $Format
 
 #Load CSV
-Write-Host "Onboarding file $filePath. Please Wait" -ForegroundColor Yellow
-$csv = Import-Csv $filePath
+Write-Host "Onboarding file $FilePath. Please Wait" -ForegroundColor Yellow
+$csv = Import-Csv $FilePath
 	if ($format -eq "Devolutions")
 	{import-Module "${env:ProgramFiles(x86)}\Devolutions\Remote Desktop Manager\RemoteDesktopManager.PowerShellModule.dll"}
 
