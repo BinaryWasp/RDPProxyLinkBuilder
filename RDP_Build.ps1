@@ -75,16 +75,14 @@ foreach ($line in $csv) {
 	
 		if ($Format -eq "Devolutions") { 
 		#Building of Devolutions File
-		
 		Get-RDMInstance
 		$RDPname=$line.filename
 		$computerName = $PSMserver;
 		$theusername = $EPVuser;
-		#$thedomain = "dev.loc";
-		#$thepassword = "123456";
 		$session = New-RDMSession -Host $computerName -Type "RDPConfigured" -Name $RDPname;
 		Set-RDMSession -Session $session -Refresh;
 		Update-RDMUI #dont know why this is still necessary, it slows down the process significantly
 		Set-RDMSessionProperty -ID $session.ID -Property "AlternateShell" -Value "psm /u $Username /a $Server /c PSM-RDP"
+		#Write-Host "$RDPname Created successfully." -ForegroundColor Green
 		}
 }
