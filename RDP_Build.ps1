@@ -89,7 +89,7 @@ foreach ($line in $csv) {
 
 
 
-if ($Format -eq "PSMP") { 
+if ($Format -eq "PuTTY") { 
 	#Building of REG File
 	$REGname=$line.filename + ".reg"
 	
