@@ -153,7 +153,7 @@ add-content $REGname '"SshProt"=dword:00000003'
 add-content $REGname '"LogHost"=""'
 add-content $REGname '"SSH2DES"=dword:00000000'
 add-content $REGname '"PublicKeyFile"=""'
-$KeyName='"RemoteCommand"="'+ $EPVuser + " " + $Username + " " + $Username + '"'
+$KeyName='"RemoteCommand"="'+ $EPVuser + " " + $Username + " " + $Server + '"'
 add-content $REGname $KeyName
 add-content $REGname '"RFCEnviron"=dword:00000000'
 add-content $REGname '"PassiveTelnet"=dword:00000000'
