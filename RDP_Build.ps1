@@ -408,4 +408,6 @@ If ($Format.ToLower() -eq "rdman") {
 	$xmlWriter.WriteEndDocument()
 	$xmlWriter.Flush()
 	$xmlWriter.Close()
+
+	Write-Host "RDGFileOutPut was generated."
 }
